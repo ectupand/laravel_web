@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('description');
             $table->boolean('status');
         });
+        Schema::table('tasks', function ($table) {
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
+        });
     }
 
     /**

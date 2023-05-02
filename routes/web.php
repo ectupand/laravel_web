@@ -18,5 +18,5 @@ use App\Http\Controllers\TaskController;
 
 Route::get('/signup', [SignUpController::class, 'signup']);
 Route::post('/signup/check', [SignUpController::class, 'signup_check']);
-Route::get('/tasks', [TaskController::class, 'tasks']);
+Route::get('/tasks', [TaskController::class, 'tasks_list']);
 
