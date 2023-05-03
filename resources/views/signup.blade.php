@@ -1,6 +1,8 @@
 @extends('layout')
 
 @section('content')
+    <div class="col-4 m-a">
+
     <h1>Форма регистрации</h1>
 
     @if($errors->any())
@@ -12,7 +14,6 @@
             </ul>
         </div>
     @endif
-    <div class="col-3 m-a">
         <form method="post" action="/signup/check">
             @csrf
             <input type="text" name="name" id="name" placeholder="Имя" class="form-control m-1">
