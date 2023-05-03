@@ -9,12 +9,40 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     public function tasks_list(){
-        $tasks = Task::all();
         $users = User::all();
+        $tasks = Task::with('user')->get();
+
         return view(
             'tasks',
             ['tasks' => $tasks,
             'users' => $users]
         );
+    }
+
+    public function tasks_add(){
+        $users = User::all();
+        return view(
+            'add_task',
+            ['users' => $users]);
+    }
+
+    public function tasks_add_check(Request $request) {
+        $valid = $request->validate([
+            'taskName' => 'required|max:66'
+        ]);
+        $task = new Task();
+        $task->taskName = $request->input('taskName');
+        $task->description = $request->input('description');
+        $task->status = 0;
+        $userName = $request->input('user');
+        $user = User::where('name', '=', $userName)->first();
+        $task->user_id = $user->id;
+
+        $task->save();
+        return redirect()->route('tasks');
+    }
+
+    public function edit_task(Request $request){
+
     }
 }

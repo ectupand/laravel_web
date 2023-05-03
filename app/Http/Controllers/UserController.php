@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class SignUpController extends Controller
+class UserController extends Controller
 {
     public function signup(){
         return view('signup');
@@ -25,6 +25,6 @@ class SignUpController extends Controller
         $user->password = $request->input('password');
 
         $user->save();
-        return redirect()->route('/tasks');
+        return redirect()->route('tasks');
     }
 }
