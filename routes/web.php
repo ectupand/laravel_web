@@ -17,7 +17,7 @@ use App\Http\Controllers\TaskController;
 
 
 Route::get('/', function () {
-    return redirect('signup');});
+    return redirect('tasks');});
 Route::get('/signup', [UserController::class, 'signup'])->name('signup');
 Route::post('/signup/check', [UserController::class, 'signup_check']);
 Route::get('/tasks', [TaskController::class, 'tasks_list'])->name('tasks');
