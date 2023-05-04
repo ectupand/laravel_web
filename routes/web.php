@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\TaskController;
 
 /*
@@ -16,7 +16,13 @@ use App\Http\Controllers\TaskController;
 */
 
 
-Route::get('/signup', [SignUpController::class, 'signup']);
-Route::post('/signup/check', [SignUpController::class, 'signup_check']);
-Route::get('/tasks', [TaskController::class, 'tasks_list']);
+Route::get('/', function () {
+    return redirect('signup');});
+Route::get('/signup', [UserController::class, 'signup'])->name('signup');
+Route::post('/signup/check', [UserController::class, 'signup_check']);
+Route::get('/tasks', [TaskController::class, 'tasks_list'])->name('tasks');
+Route::get('/tasks/add', [TaskController::class, 'tasks_add'])->name('tasks_add');
+Route::post('/tasks/add/check', [TaskController::class, 'tasks_add_check']);
+Route::get('/tasks/{slug}/edit', [TaskController::class, 'edit_task']);
+Route::put('/tasks/{slug}/edit', [TaskController::class, 'update'])->name('update');
 

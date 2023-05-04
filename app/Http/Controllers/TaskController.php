@@ -42,7 +42,27 @@ class TaskController extends Controller
         return redirect()->route('tasks');
     }
 
-    public function edit_task(Request $request){
+    public function edit_task($id){
+        $task = Task::find($id);
+        $users = User::all();
+        return view(
+            'edit',
+            ['task' => $task,
+            'users' => $users]);
+    }
 
+    public function update(Request $request, $id){
+        $task = Task::find($id);
+        $task->taskName = $request->input('taskName');
+        $task->description = $request->input('description');
+
+        $task->status = $request->has('status');
+
+
+        $userName = $request->input('user');
+        $user = User::where('name', '=', $userName)->first();
+        $task->user_id = $user->id;
+        $task->update();
+        return redirect('tasks');
     }
 }
