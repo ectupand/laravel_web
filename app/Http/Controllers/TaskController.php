@@ -33,7 +33,11 @@ class TaskController extends Controller
         $task = new Task();
         $task->taskName = $request->input('taskName');
         $task->description = $request->input('description');
-        $task->status = 0;
+        if ($request->input('status')) {
+            $task->status = $request->input('status');
+        } else {
+            $task->status = 0;
+        }
         $userName = $request->input('user');
         $user = User::where('name', '=', $userName)->first();
         $task->user_id = $user->id;
