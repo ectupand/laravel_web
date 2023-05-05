@@ -18,7 +18,7 @@
             @csrf
             @method('PUT')
             <input value="{{ $task->taskName }}" type="text" name="taskName" id="taskName" placeholder="Коротко" class="form-control m-1">
-            <textarea value="{{ $task->description }}" name="description" id="description" placeholder="Подробнее" class="form-control m-1"></textarea>
+            <textarea name="description" id="description" placeholder="Подробнее" class="form-control m-1">{{ $task->description }}</textarea>
             @if($task->status === 1)
                 <input type="checkbox" id="status" name="status" checked>
             @else
