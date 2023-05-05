@@ -35,4 +35,13 @@ class UserController extends Controller
             'user_edit',
             ['users' => $users]);
     }
+
+    public function edit_check(Request $request){
+        $user = User::find($request->input('id'));
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->age = $request->input('age');
+        $user->update();
+        return redirect('tasks');
+    }
 }
