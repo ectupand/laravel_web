@@ -28,3 +28,4 @@ Route::put('/tasks/{slug}/edit', [TaskController::class, 'update'])->name('updat
 Route::get('/users/edit', [UserController::class, 'edit']);
 Route::put('/users/edit', [UserController::class, 'edit'])->name('edit');
 Route::post('/users/edit/check', [UserController::class, 'edit_check']);
+Route::delete('/tasks/{slug}/', [TaskController::class, 'delete'])->name('delete');

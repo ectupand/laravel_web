@@ -25,12 +25,17 @@
                 <input type="checkbox" id="status" name="status" >
             @endif
             <label for="status"> Актуально</label><br>
-            <select value="{{ $task->user }}" name="user" id="user-select">
+            <select name="user" id="user-select">
                 @foreach($users as $user)
                     <option>{{ $user->name }}</option>
                 @endforeach
             </select><br>
             <button type="submit" class="btn btn-secondary m-1">Сохранить</button>
+        </form>
+        <form method="post" action="{!! route('delete', $task->id) !!}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-secondary m-1">Удалить</button>
         </form>
     </div>
 @endsection
