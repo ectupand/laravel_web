@@ -25,4 +25,5 @@ Route::get('/tasks/add', [TaskController::class, 'tasks_add'])->name('tasks_add'
 Route::post('/tasks/add/check', [TaskController::class, 'tasks_add_check']);
 Route::get('/tasks/{slug}/edit', [TaskController::class, 'edit_task']);
 Route::put('/tasks/{slug}/edit', [TaskController::class, 'update'])->name('update');
-
+Route::get('/users/edit', [UserController::class, 'edit']);
+Route::put('/users/edit', [UserController::class, 'edit'])->name('edit');
