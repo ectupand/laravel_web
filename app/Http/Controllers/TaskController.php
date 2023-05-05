@@ -46,7 +46,7 @@ class TaskController extends Controller
         $task = Task::find($id);
         $users = User::all();
         return view(
-            'edit',
+            'task_edit',
             ['task' => $task,
             'users' => $users]);
     }
